@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cryptic Shadows Challenge</title>
+    <style>
+        body { 
+            font-family: 'Courier New', monospace; 
+            background: #0a0a0a; 
+            color: #00ff00; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+        }
+        .container { 
+            background: rgba(20, 20, 20, 0.9); 
+            border: 2px solid #00ff00; 
+            border-radius: 10px; 
+            padding: 30px; 
+            max-width: 800px; 
+            margin: auto; 
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        h1 { 
+            color: #ff6b6b; 
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            margin-bottom: 30px;
+        }
+        .mission-brief {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .ciphertext {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+        .hint {
+            color: #ffd93d;
+            font-style: italic;
+            margin: 15px 0;
+        }
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .file-content {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #4ecdc4;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+        .vault-door {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border: 3px solid #e74c3c;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .vault-door::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid #e74c3c;
+            pointer-events: none;
+        }
+        .specter-signature {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 CRYPTIC SHADOWS CHALLENGE 🔒</h1>
+        
+        <div class="mission-brief">
+            <h2>MISSION BRIEF</h2>
+            <p>Agent, you are tasked with recovering the lost "Obsidian Key" from the rogue agent codenamed "Specter." 
+            The key is locked in a digital vault protected by cryptographic puzzles. Specter has left behind encrypted messages 
+            to taunt us. Decrypt these messages, follow the clues, and retrieve the final flag to unlock the vault.</p>
+            <p><strong>Warning:</strong> Specter's puzzles are designed to test your wits. Each layer reveals a hint to the next. 
+            Don't overlook the challenge name—it might hold secrets.</p>
+        </div>
+
+        <div class="mission-brief">
+            <h2>LAYER 1: THE CIPHERED NOTE</h2>
+            <p>You find a note left by Specter with an encrypted message:</p>
+            <div class="ciphertext">MJQXZJMLTKZSIJHLTKAFHKLQXJ</div>
+            <div class="hint">
+                <strong>Specter's Hint:</strong> "Shift your perspective, as Caesar would, but the key lies in the shadows of the first."
+            </div>
+            <p><em>Task: Decrypt the ciphertext to reveal the message and find the hint to Layer 2.</em></p>
+        </div>
+
+        <div class="mission-brief" id="layer2" style="display: none;">
+            <h2>LAYER 2: THE HIDDEN FILE</h2>
+            <p>Following the decrypted message, you discover a file named "shadow.txt":</p>
+            <div class="file-content">01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100
+
+Hint: "Look beyond the greeting; the shadow hides in the base."</div>
+            <p><em>Task: Decode the binary string and uncover the hint for Layer 3.</em></p>
+        </div>
+
+        <div class="mission-brief" id="layer3" style="display: none;">
+            <h2>LAYER 3: THE FINAL VAULT</h2>
+            <div class="vault-door">
+                <p>You find a final encrypted message etched into the vault's door:</p>
+                <div class="ciphertext">QVFSDAKZTKAF</div>
+                <div class="hint">
+                    <strong>Vault Hint:</strong> "The shadow's fifth letter holds the key to victory."
+                </div>
+                <p><em>Task: Decrypt the ciphertext to reveal the flag.</em></p>
+            </div>
+        </div>
+
+        <div class="specter-signature">
+            "Good luck, agent. The shadows are watching... - Specter"
+        </div>
+    </div>
+
+    <script>
+        // Hidden data for Layer 2 (binary string)
+        const shadowFileData = "01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100";
+        
+        // Vigenère cipher implementation
+        function vigenereDecrypt(ciphertext, key) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let result = '';
+            let keyIndex = 0;
+            
+            for (let i = 0; i < ciphertext.length; i++) {
+                const char = ciphertext[i];
+                if (alphabet.includes(char)) {
+                    const charIndex = alphabet.indexOf(char);
+                    const keyChar = key[keyIndex % key.length];
+                    const keyIndexInAlphabet = alphabet.indexOf(keyChar);
+                    const decryptedIndex = (charIndex - keyIndexInAlphabet + 26) % 26;
+                    result += alphabet[decryptedIndex];
+                    keyIndex++;
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+        
+        // Binary to ASCII conversion
+        function binaryToAscii(binaryString) {
+            const binaryArray = binaryString.split(' ');
+            let result = '';
+            for (let binary of binaryArray) {
+                if (binary.length === 8) {
+                    const decimal = parseInt(binary, 2);
+                    result += String.fromCharCode(decimal);
+                }
+            }
+            return result;
+        }
+        
+        // Reveal layers based on user progress
+        function revealLayer(layerNumber) {
+            if (layerNumber === 2) {
+                document.getElementById('layer2').style.display = 'block';
+            } else if (layerNumber === 3) {
+                document.getElementById('layer3').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html> 
