@@ -1,0 +1,17 @@
+ Challenge Title: The Whispering Cipher
+🧩 Story/Intro
+
+An anonymous whistleblower left a message containing sensitive information hidden in layers of encryption. You intercepted this note:
+TmlubHZ2Zl9LZ2Z0a3FvZ2h0eWFfUWhfSnNmbg==
+
+🎯 Goal
+Recover the original plaintext message.
+
+Hint 1:
+You can decode the string using base64.
+
+Hint 2:
+Consider the Vigenère Cipher — very popular in the 19th century and uses a repeating key.
+
+Hint 3:
+Try common English words like “key”, “flag”, or even “cipher” as the key to decrypt.
