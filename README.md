@@ -21,19 +21,19 @@ Your mission is to:
 ## 🧩 Challenge Structure
 
 ### Layer 1: The Ciphered Note
-- **Ciphertext:** `MJQXZJMLTKZSIJHLTKAFHKLQXJ`
-- **Hint:** "Shift your perspective, as Caesar would, but the key lies in the shadows of the first."
-- **Solution:** Vigenère cipher with key derived from challenge name
+- **Ciphertext:** `LOENSUAZIQHDWMIOS`
+- **Hint:** "The key lies in the shadows of the first word, repeated like an echo."
+- **Solution:** Vigenère cipher with key "SHADOW" derived from challenge name
 
 ### Layer 2: The Hidden File
-- **Data:** Binary string encoding "Hello world"
+- **Data:** Binary string encoding "V"
 - **Hint:** "Look beyond the greeting; the shadow hides in the base."
-- **Solution:** Binary to ASCII, then base64 encoding of bit count
+- **Solution:** Binary to ASCII conversion
 
 ### Layer 3: The Final Vault
-- **Ciphertext:** `QVFSDAKZTKAF`
+- **Ciphertext:** `OTHSFGVORCKG`
 - **Hint:** "The shadow's fifth letter holds the key to victory."
-- **Solution:** Vigenère cipher with key from challenge name
+- **Solution:** Vigenère cipher with key "O" (fifth letter of "Shadows")
 
 ## 🏆 Flag Format
 
