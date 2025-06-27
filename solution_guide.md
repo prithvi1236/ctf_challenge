@@ -52,19 +52,18 @@ Result:    THEKEYISINTHEFILE
 ## Layer 3: The Final Vault
 
 ### Given:
-- **Ciphertext:** `OTHSFGVORCKG`
-- **Hint:** "The shadow's fifth letter holds the key to victory."
+- **Ciphertext:** `VAOZMNCVYJRN`
+- **Hint:** "Use the key from the previous layer to unlock this cipher."
 
 ### Solution Process:
 1. From Layer 2, we know the key is "V"
-2. The hint refers to "Shadows" (from challenge name)
-3. The fifth letter of "Shadows" is 'o' (S-h-a-d-o-w)
-4. Use 'O' as the Vigenère key
+2. The hint directly tells us to use the key from the previous layer
+3. Use "V" as the Vigenère key
 
 ### Decryption:
 ```
-Ciphertext: OTHSFGVORCKG
-Key:       OOOOOOOOOOOO
+Ciphertext: VAOZMNCVYJRN
+Key:       VVVVVVVVVVVV
 Result:    AFTERSHADOWS
 ```
 

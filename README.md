@@ -31,9 +31,9 @@ Your mission is to:
 - **Solution:** Binary to ASCII conversion
 
 ### Layer 3: The Final Vault
-- **Ciphertext:** `OTHSFGVORCKG`
-- **Hint:** "The shadow's fifth letter holds the key to victory."
-- **Solution:** Vigenère cipher with key "O" (fifth letter of "Shadows")
+- **Ciphertext:** `VAOZMNCVYJRN`
+- **Hint:** "Use the key from the previous layer to unlock this cipher."
+- **Solution:** Vigenère cipher with key "V" from Layer 2
 
 ## 🏆 Flag Format
 
